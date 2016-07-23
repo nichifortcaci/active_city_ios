@@ -10,12 +10,22 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+extension String
+{
+    func replace(target: String, withString: String) -> String
+    {
+        return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+}
+
 
 class TableViewEvenimente: UITableViewController {
     
-    let URL = "http://api.androidhive.info/contacts/"
-    var arrayTitle = [String]()
-    var arrayMessage = [String]()
+    //let URL = "http://api.androidhive.info/contacts/"
+    let URL = "http://jsonplaceholder.typicode.com/todos"
+    let url = "http://192.168.1.23:8080/category/getCategoryes"
+    var arrayTitle = ["Curatim terenul de joca", "Curatim terenul de joca"]
+    var arrayMessage = ["Caut 10 persoane pentru a curati terenul de joaca luni data de 1/1/1 1:1:1", "Curatim terenul de joca"]
     var arrayPhoto = [String]()
     var arrayLocationLatitude = [String]()
     var arrayLocationLongitude = [String]()
@@ -23,8 +33,18 @@ class TableViewEvenimente: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let data = NSUserDefaults.standardUserDefaults().dataForKey("localdata") as! [CheckPoint] {
+            checkPointArray = data
+        }
+        
+        parseData()
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
         self.title = "Evenimente"
+        
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,46 +60,63 @@ class TableViewEvenimente: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return arrayMessage.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("evenimente", forIndexPath: indexPath) as! TableViewCell
-
-        // Configure the cell...
-
+//
+        cell.title.text = checkPointArray[indexPath.row].title
+        cell.message.text = checkPointArray[indexPath.row].message
+        
         return cell
     }
     
     func parseData() {
-        
-        Alamofire.request(.GET, self.URL).responseJSON { (respons) in
-            
-            if let valueRespons = respons.result.value {
-                let contacts = JSON(valueRespons)["contacts"].array!
-                
-                for contact in contacts {
-                    if let name = contact["name"].string,
-                        id = contact["id"].string,
-                        email = contact["email"].string,
-                        address = contact["address"].string,
-                        gender = contact["gender"].string,
-                        phone = contact["phone"].dictionaryObject {
-                        
-                        let checkPoint = CheckPoint()
-
-                        
-                      //  self.contactsData.append(temp)
-                    }
+    
+        Alamofire.request(.GET, URL)
+            .responseJSON { response in
+                guard response.result.error == nil else {
+                    // got an error in getting the data, need to handle it
+                    print("error calling GET on /todos/1")
+                    print(response.result.error!)
+                    return
                 }
                 
-                self.tableView.reloadData()
-                
-            }
+                if let value = response.result.value {
+                    // handle the results as JSON, without a bunch of nested if loops
+                    let todo = JSON(value).arrayValue
+                    // now we have the results, let's just print them though a tableview would definitely be better UI:
+                    print("The todo is: " + todo.description)
+                    for to in todo {
+                    if let title = to["title"].string {
+                        // to access a field:
+                        print("The title is: " + title)
+                    } else {
+                        print("error parsing /todos/1")
+                    }
+                    }
+                }
         }
+    
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detalie" {
+            if let index = self.tableView.indexPathForSelectedRow {
+            let vc = segue.destinationViewController as! ViewDetalii
+            let cell = self.tableView.cellForRowAtIndexPath(index) as! TableViewCell
+            let checkPoint = CheckPoint()
+           /* checkPoint.category = cell.
+                
+                
+                
+            vc.checkPoint =*/
+        }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
+var checkPointArray = [CheckPoint]()
+
 class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate {
     
     let locationManager = CLLocationManager()
@@ -54,6 +56,9 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     func action(gestureRecognizer:UIGestureRecognizer) {
         let touchPoint = gestureRecognizer.locationInView(self.map)
         let newCoord:CLLocationCoordinate2D = map.convertPoint(touchPoint, toCoordinateFromView: self.map)
+        
+        checkPoint.latitude = newCoord.latitude.description
+        checkPoint.longitude = newCoord.longitude.description
         
         let newAnotation = MKPointAnnotation()
         newAnotation.coordinate = newCoord
@@ -110,15 +115,18 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             let alert = UIAlertController(title: "Error", message: "Enter title and message", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-        }
+        } else {
         
         if let title = titleField.text, message = messageField.text {
             
             checkPoint.title = title
             checkPoint.message = message
+            checkPoint.image = UIImage(named: "user")!
+            NSUserDefaults.standardUserDefaults().setValue(checkPointArray, forKey: "localdata")
         }
         
         print(checkPoint)
+        }
     }
     
     @IBOutlet weak var messageField: UITextField!

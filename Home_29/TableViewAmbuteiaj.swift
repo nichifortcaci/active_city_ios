@@ -12,6 +12,9 @@ class TableViewAmbuteiaj: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
 
         self.title = "Ambuteiaj"
     }
