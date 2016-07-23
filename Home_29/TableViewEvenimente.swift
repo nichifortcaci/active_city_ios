@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
 
 class TableViewEvenimente: UITableViewController {
+    
+    let URL = "http://api.androidhive.info/contacts/"
+    var arrayTitle = [String]()
+    var arrayMessage = [String]()
+    var arrayPhoto = [String]()
+    var arrayLocationLatitude = [String]()
+    var arrayLocationLongitude = [String]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +50,34 @@ class TableViewEvenimente: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    func parseData() {
+        
+        Alamofire.request(.GET, self.URL).responseJSON { (respons) in
+            
+            if let valueRespons = respons.result.value {
+                let contacts = JSON(valueRespons)["contacts"].array!
+                
+                for contact in contacts {
+                    if let name = contact["name"].string,
+                        id = contact["id"].string,
+                        email = contact["email"].string,
+                        address = contact["address"].string,
+                        gender = contact["gender"].string,
+                        phone = contact["phone"].dictionaryObject {
+                        
+                        let checkPoint = CheckPoint()
+
+                        
+                      //  self.contactsData.append(temp)
+                    }
+                }
+                
+                self.tableView.reloadData()
+                
+            }
+        }
     }
     
 
