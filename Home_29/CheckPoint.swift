@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 class CheckPoint {
+    var id = Int()
     var title = String()
-    var message = String()
-    var category = String()
-    var image = UIImage()
-    var latitude = ""
-    var longitude = ""
+    var content = String()
+    var media = String()
+    var location = Position()
+    var categoryId = Int()
+    var startDatetime = String()
+    var endDatetime = String()
 }

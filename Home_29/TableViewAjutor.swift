@@ -9,13 +9,21 @@
 import UIKit
 
 class TableViewAjutor: UITableViewController {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
+        self.tabBarController?.tabBar.barTintColor = UIColor.blueColor()
+        UIView.transitionWithView(tableView, duration: 1.0, options: .TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
 
-       self.title = "Ajutor"
+        
+       self.title = "Help now"
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +46,10 @@ class TableViewAjutor: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        CellAnimator.animateCell(cell, withTransform: CellAnimator.TransformWave, andDuration: 1)
     }
     
 

@@ -15,7 +15,7 @@ class TableViewAltele: UITableViewController {
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-        self.title = "Altele"
+        self.title = "Other"
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +43,11 @@ class TableViewAltele: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        CellAnimator.animateCell(cell, withTransform: CellAnimator.TransformWave, andDuration: 1)
+    }
+    
     
 
     /*

@@ -10,18 +10,29 @@ import UIKit
 import MapKit
 import CoreLocation
 
-var checkPointArray = [CheckPoint]()
+var checkPointArray = ["" : [CheckPoint]()]
+
+
+
+var defaults = NSUserDefaults.standardUserDefaults()
 
 class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate {
     
     let locationManager = CLLocationManager()
     
-    let category = ["Voluntariat", "Accidente", "Ajutor", "Ambuteiaj", "Evenimente", "Altele"]
+    let tmpKey = "tmpKey"
+    
+    let category = ["Voluntair", "Incidents", "Help now", "Util info", "Events", "Other"]
     var checkPoint = CheckPoint()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*if let testArray = defaults.objectForKey(tmpKey) {
+            checkPointArray = testArray as! [CheckPoint]
+        }
+ */
+
         picker.delegate = self
         map.delegate = self
         
@@ -57,8 +68,8 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         let touchPoint = gestureRecognizer.locationInView(self.map)
         let newCoord:CLLocationCoordinate2D = map.convertPoint(touchPoint, toCoordinateFromView: self.map)
         
-        checkPoint.latitude = newCoord.latitude.description
-        checkPoint.longitude = newCoord.longitude.description
+        checkPoint.location.latitude = "\(newCoord.latitude)"
+        checkPoint.location.longitude = "\(newCoord.longitude)"
         
         let newAnotation = MKPointAnnotation()
         newAnotation.coordinate = newCoord
@@ -105,7 +116,7 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        checkPoint.category = category[row]
+        checkPoint.categoryId = row
     }
     
 
@@ -119,10 +130,17 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         if let title = titleField.text, message = messageField.text {
             
-            checkPoint.title = title
-            checkPoint.message = message
-            checkPoint.image = UIImage(named: "user")!
-            NSUserDefaults.standardUserDefaults().setValue(checkPointArray, forKey: "localdata")
+            self.checkPoint.title = title
+            self.checkPoint.content = message
+            //self.checkPoint.image = UIImage(named: "user")!
+            
+            checkPointArray[self.category[checkPoint.categoryId]] = [checkPoint]
+            //defaults.setObject(checkPointArray, forKey: tmpKey)
+            //defaults.synchronize()
+            
+            titleField.text = ""
+            messageField.text = ""
+            self.navigationController?.popViewControllerAnimated(true)
         }
         
         print(checkPoint)

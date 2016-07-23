@@ -17,10 +17,10 @@ class ViewDetalii: UIViewController {
         super.viewDidLoad()
         
         titleLabel.text = checkPoint.title
-        messageLabel.text = checkPoint.message
-        categoryLabel.text = checkPoint.category
-        position.text = checkPoint.latitude + "\n" + checkPoint.longitude
-        image.image = checkPoint.image
+        messageLabel.text = checkPoint.content
+        categoryLabel.text = "\(checkPoint.categoryId)"
+        position.text = checkPoint.location.latitude + "\n" + checkPoint.location.longitude
+        //image.image = checkPoint.image
 
     }
 

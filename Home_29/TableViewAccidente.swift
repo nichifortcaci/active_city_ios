@@ -36,11 +36,15 @@ class TableViewAccidente: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("accidente", forIndexPath: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Util info", forIndexPath: indexPath) as! TableViewCell
 
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        CellAnimator.animateCell(cell, withTransform: CellAnimator.TransformWave, andDuration: 1)
     }
     
 

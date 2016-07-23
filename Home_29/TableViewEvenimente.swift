@@ -21,6 +21,8 @@ extension String
 
 class TableViewEvenimente: UITableViewController {
     
+    let tmpKey = "tmpKey"
+    
     //let URL = "http://api.androidhive.info/contacts/"
     let URL = "http://jsonplaceholder.typicode.com/todos"
     let url = "http://192.168.1.23:8080/category/getCategoryes"
@@ -34,15 +36,16 @@ class TableViewEvenimente: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let data = NSUserDefaults.standardUserDefaults().dataForKey("localdata") as! [CheckPoint] {
-            checkPointArray = data
+     /*   if let testArray = defaults.objectForKey(tmpKey) {
+            checkPointArray = testArray as! [CheckPoint]
         }
+ */
         
         parseData()
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-        self.title = "Evenimente"
+        self.title = "Events"
         
         self.tableView.reloadData()
     }
@@ -60,15 +63,27 @@ class TableViewEvenimente: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arrayMessage.count
+        return checkPointArray.count
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tableView.reloadData()
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("evenimente", forIndexPath: indexPath) as! TableViewCell
 //
-        cell.title.text = checkPointArray[indexPath.row].title
-        cell.message.text = checkPointArray[indexPath.row].message
+        //cell.title.text = checkPointArray[indexPath.row].title
+       //cell.message.text = checkPointArray[indexPath.row].content
         
         return cell
     }
@@ -117,6 +132,11 @@ class TableViewEvenimente: UITableViewController {
         }
         }
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        CellAnimator.animateCell(cell, withTransform: CellAnimator.TransformWave, andDuration: 1)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

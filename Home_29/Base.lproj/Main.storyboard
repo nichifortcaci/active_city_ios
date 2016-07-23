@@ -170,7 +170,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppf-u3-qlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-326" y="453"/>
+            <point key="canvasLocation" x="-458" y="429"/>
         </scene>
         <!--How are you?-->
         <scene sceneID="DkH-KM-zyU">
@@ -234,7 +234,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.98450449089280334" green="1" blue="0.38868489230684466" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SfP-4m-27t" firstAttribute="top" secondItem="YcE-Bh-jqZ" secondAttribute="bottom" constant="-100" id="FZM-3P-kmK"/>
                             <constraint firstItem="YcE-Bh-jqZ" firstAttribute="centerX" secondItem="Zqf-XU-7R3" secondAttribute="centerX" id="GK8-XG-Yge"/>
@@ -825,11 +825,11 @@
             </objects>
             <point key="canvasLocation" x="-187" y="1207"/>
         </scene>
-        <!--Ambuteiaj-->
+        <!--Incidents-->
         <scene sceneID="Qpf-aO-rik">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bye-cd-HjT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ambuteiaj" id="OWs-ka-PIV"/>
+                    <tabBarItem key="tabBarItem" title="Incidents" id="OWs-ka-PIV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="psZ-u7-f8G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -844,11 +844,11 @@
             </objects>
             <point key="canvasLocation" x="938" y="-77"/>
         </scene>
-        <!--Voluntariat-->
+        <!--Voluntair-->
         <scene sceneID="VUK-Aa-qf4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cED-sU-AYf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Voluntariat" id="Fm5-mp-2ma"/>
+                    <tabBarItem key="tabBarItem" title="Voluntair" id="Fm5-mp-2ma"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T0C-qD-WTP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -861,13 +861,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZD-9A-edV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938" y="561"/>
+            <point key="canvasLocation" x="810" y="561"/>
         </scene>
-        <!--Accidente-->
+        <!--Util info-->
         <scene sceneID="ztM-G9-EwY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8hB-Rz-C4a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accidente" id="jNk-c0-N4s"/>
+                    <tabBarItem key="tabBarItem" title="Util info" id="jNk-c0-N4s"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B3G-Ld-zsD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -882,11 +882,11 @@
             </objects>
             <point key="canvasLocation" x="1845" y="561"/>
         </scene>
-        <!--Evenimente-->
+        <!--Events-->
         <scene sceneID="yUo-iP-LbT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G4W-m3-h5H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Evenimente" id="9b4-ah-uME"/>
+                    <tabBarItem key="tabBarItem" title="Events" id="9b4-ah-uME"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l9N-5c-xmh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -901,11 +901,11 @@
             </objects>
             <point key="canvasLocation" x="1026" y="1256"/>
         </scene>
-        <!--Ajutor-->
+        <!--Help now-->
         <scene sceneID="cuN-UX-YXv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5F5-Nh-BTH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ajutor" id="WMM-vn-4hf"/>
+                    <tabBarItem key="tabBarItem" title="Help now" id="WMM-vn-4hf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kHD-d1-91h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -920,11 +920,11 @@
             </objects>
             <point key="canvasLocation" x="1923" y="1256"/>
         </scene>
-        <!--Altele-->
+        <!--Other-->
         <scene sceneID="Vgh-8n-aze">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LZn-XX-dh1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Altele" id="QfN-c6-AdD"/>
+                    <tabBarItem key="tabBarItem" title="Other" id="QfN-c6-AdD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ihw-9E-BcS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -947,7 +947,7 @@
         <image name="user" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xny-we-KNW"/>
-        <segue reference="YCr-Bt-DeE"/>
+        <segue reference="doV-It-Hbx"/>
+        <segue reference="MKp-cG-Cyl"/>
     </inferredMetricsTieBreakers>
 </document>
