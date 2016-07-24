@@ -17,6 +17,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var comment: UIButton!
     @IBOutlet weak var share: UIButton!
     @IBOutlet weak var likes: UILabel!
+    @IBOutlet weak var user: UILabel!
     
     
 

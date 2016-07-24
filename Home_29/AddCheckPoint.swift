@@ -34,6 +34,7 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
  */
 
         picker.delegate = self
+        
         map.delegate = self
         
         let theSpan:MKCoordinateSpan = MKCoordinateSpanMake(0.01 , 0.01)
@@ -49,15 +50,25 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         self.map.showsUserLocation = true
       
         
-        for annotation  in annatotionPoint {
-            map.addAnnotation(annotation)
-        }
         
         let longPress = UILongPressGestureRecognizer(target: self, action: "action:")
         longPress.minimumPressDuration = 0.2
         map.addGestureRecognizer(longPress)
 
     }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
+        
+    {
+        let pickerLabel = UILabel()
+        pickerLabel.textColor = UIColor.blackColor()
+        pickerLabel.text = category[row]
+        pickerLabel.font = UIFont(name: pickerLabel.font.fontName, size: 15)
+        //pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 15) // In this use your custom font
+        pickerLabel.textAlignment = NSTextAlignment.Left
+        return pickerLabel
+    }
+    
     
     func action(gestureRecognizer:UIGestureRecognizer) {
         if titleField.text == "" || messageField.text == "" {
@@ -76,7 +87,7 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         let newAnotation = MKPointAnnotation()
         newAnotation.coordinate = newCoord
         newAnotation.title = titleField.text != "" ? titleField.text : "Title"
-        newAnotation.subtitle = messageField.text != "" ? messageField.text : "Meesage"
+        newAnotation.subtitle = messageField.text != "" ? messageField.text : "Message"
         map.addAnnotation(newAnotation)
         annatotionPoint.append(newAnotation)
         }

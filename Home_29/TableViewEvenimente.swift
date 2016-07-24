@@ -21,16 +21,16 @@ extension String
 
 class TableViewEvenimente: UITableViewController {
     
+    let arrayTitle = ["Broken car", "Park cleaning", "Broken car", "Park cleaning", "Broken car", "Park cleaning"]
+    let arrayMessage = ["Need help wuthbroken car", "Who want to clean cntral park", "Need help wuthbroken car", "Who want to clean cntral park", "Need help wuthbroken car", "Who want to clean cntral park"]
+    let arrayuser = ["John John", "Mike Mike", "John John", "Mike Mike", "John John", "Mike Mike"]
+    
     let tmpKey = "tmpKey"
     
     //let URL = "http://api.androidhive.info/contacts/"
     let URL = "http://jsonplaceholder.typicode.com/todos"
     let url = "http://192.168.1.23:8080/category/getCategoryes"
-    var arrayTitle = ["Curatim terenul de joca", "Curatim terenul de joca"]
-    var arrayMessage = ["Caut 10 persoane pentru a curati terenul de joaca luni data de 1/1/1 1:1:1", "Curatim terenul de joca"]
-    var arrayPhoto = [String]()
-    var arrayLocationLatitude = [String]()
-    var arrayLocationLongitude = [String]()
+
 
 
     override func viewDidLoad() {
@@ -47,6 +47,7 @@ class TableViewEvenimente: UITableViewController {
 
         self.title = "Events"
         
+        sendNotification()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +63,7 @@ class TableViewEvenimente: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return checkPointArray.count
+        return arrayuser.count
     }
     
 
@@ -72,7 +73,27 @@ class TableViewEvenimente: UITableViewController {
         //cell.title.text = checkPointArray[indexPath.row].title
        //cell.message.text = checkPointArray[indexPath.row].content
         
+        cell.imageUser.image = UIImage(named: "download")
+        cell.imageUser.layer.cornerRadius = 25
+        cell.imageUser.clipsToBounds = true
+        
+        cell.title.text = arrayTitle[indexPath.row]
+        cell.message.text = arrayMessage[indexPath.row]
+        //cell.user.text = arrayuser[indexPath.row]
+        
         return cell
+    }
+    
+    func sendNotification() {
+        
+        let notification = UILocalNotification()
+        notification.alertTitle = "Active City"
+        notification.alertBody = "new notification"
+        notification.alertAction = "open application"
+        notification.fireDate = NSDate(timeIntervalSinceNow: 6)
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
     }
     
     func parseData() {

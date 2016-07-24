@@ -9,6 +9,10 @@
 import UIKit
 
 class TableViewAmbuteiaj: UITableViewController {
+    
+    let arrayTitle = ["Broken car", "Park cleaning", "Broken car", "Park cleaning", "Broken car", "Park cleaning"]
+    let arrayMessage = ["Need help wuthbroken car", "Who want to clean cntral park", "Need help wuthbroken car", "Who want to clean cntral park", "Need help wuthbroken car", "Who want to clean cntral park"]
+    let arrayuser = ["John John", "Mike Mike", "John John", "Mike Mike", "John John", "Mike Mike"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +34,20 @@ class TableViewAmbuteiaj: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return arrayuser.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ambuteiaj", forIndexPath: indexPath) as! TableViewCell
         
+        cell.imageUser.image = UIImage(named: "download")
+        cell.imageUser.layer.cornerRadius = 25
+        cell.imageUser.clipsToBounds = true
         
+        cell.title.text = arrayTitle[indexPath.row]
+        cell.message.text = arrayMessage[indexPath.row]
+        //cell.user.text = arrayuser[indexPath.row]
         
         return cell
     }
