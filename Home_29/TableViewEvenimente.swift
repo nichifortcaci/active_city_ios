@@ -47,7 +47,6 @@ class TableViewEvenimente: UITableViewController {
 
         self.title = "Events"
         
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,19 +65,7 @@ class TableViewEvenimente: UITableViewController {
         return checkPointArray.count
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tableView.reloadData()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.tableView.reloadData()
-    }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("evenimente", forIndexPath: indexPath) as! TableViewCell
 //

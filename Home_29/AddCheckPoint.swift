@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 var checkPointArray = ["" : [CheckPoint]()]
-
+var annatotionPoint = [MKPointAnnotation]()
 
 
 var defaults = NSUserDefaults.standardUserDefaults()
@@ -48,23 +48,25 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         self.map.showsUserLocation = true
       
-        /*
-        var anotation = MKPointAnnotation()
-        anotation.coordinate = location
-        anotation.title = "The Location"
-        anotation.subtitle = "This is the location !!!"
-        map.addAnnotation(anotation)
-         @IBAction func addButton(sender: AnyObject) {
-         }
- */
+        
+        for annotation  in annatotionPoint {
+            map.addAnnotation(annotation)
+        }
         
         let longPress = UILongPressGestureRecognizer(target: self, action: "action:")
-        longPress.minimumPressDuration = 1.0
+        longPress.minimumPressDuration = 0.2
         map.addGestureRecognizer(longPress)
 
     }
     
     func action(gestureRecognizer:UIGestureRecognizer) {
+        if titleField.text == "" || messageField.text == "" {
+            let alert = UIAlertController(title: "Error", message: "Firstly add title and message", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+        } else {
+        
         let touchPoint = gestureRecognizer.locationInView(self.map)
         let newCoord:CLLocationCoordinate2D = map.convertPoint(touchPoint, toCoordinateFromView: self.map)
         
@@ -76,6 +78,8 @@ class AddCheckPoint: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         newAnotation.title = titleField.text != "" ? titleField.text : "Title"
         newAnotation.subtitle = messageField.text != "" ? messageField.text : "Meesage"
         map.addAnnotation(newAnotation)
+        annatotionPoint.append(newAnotation)
+        }
         
     }
     

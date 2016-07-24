@@ -17,8 +17,10 @@ class TableViewAltele: UITableViewController {
 
         self.title = "Other"
         
-        //let play = UIBarButtonItem(title: "Play", style: .Plain, target: self, action: #selector(addTapped))
+        let play = UIBarButtonItem(image: UIImage(named: "Hello"), style: .Plain, target: self, action: "talk")
+        self.navigationItem.leftBarButtonItems = [play]
 
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +39,10 @@ class TableViewAltele: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 4
     }
-
+    
+    func talk() -> Void {
+        print("search")
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("altele", forIndexPath: indexPath) as! TableViewCell
