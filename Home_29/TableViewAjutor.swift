@@ -19,7 +19,7 @@ class TableViewAjutor: UITableViewController {
         super.viewDidLoad()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-        self.tabBarController?.tabBar.barTintColor = UIColor.blueColor()
+        self.tabBarController?.tabBar.barTintColor = UIColor(netHex:0xFFFFFF)
         UIView.transitionWithView(tableView, duration: 1.0, options: .TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
 
         

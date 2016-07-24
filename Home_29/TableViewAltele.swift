@@ -16,6 +16,9 @@ class TableViewAltele: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
         self.title = "Other"
+        
+        //let play = UIBarButtonItem(title: "Play", style: .Plain, target: self, action: #selector(addTapped))
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +52,7 @@ class TableViewAltele: UITableViewController {
     }
     
     
+   
 
     /*
     // Override to support conditional editing of the table view.

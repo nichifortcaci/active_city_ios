@@ -16,7 +16,8 @@ class TableViewAccidente: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
         
-        self.title = "Accidente"
+        
+        self.title = "Util Info"
 
     }
 
@@ -36,7 +37,7 @@ class TableViewAccidente: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Util info", forIndexPath: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("accidente", forIndexPath: indexPath) as! TableViewCell
 
         // Configure the cell...
 

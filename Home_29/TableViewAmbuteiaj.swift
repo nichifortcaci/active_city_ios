@@ -16,7 +16,7 @@ class TableViewAmbuteiaj: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
 
-        self.title = "Ambuteiaj"
+        self.title = "Incidents"
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +35,7 @@ class TableViewAmbuteiaj: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Incidents", forIndexPath: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ambuteiaj", forIndexPath: indexPath) as! TableViewCell
         
         
         

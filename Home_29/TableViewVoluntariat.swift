@@ -16,7 +16,7 @@ class TableViewVoluntariat: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
 
-        self.title = "Voluntariat"
+        self.title = "Voluntair"
     }
     
     
@@ -37,7 +37,7 @@ class TableViewVoluntariat: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Voluntair", forIndexPath: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("voluntariat", forIndexPath: indexPath) as! TableViewCell
 
         // Configure the cell...
 
